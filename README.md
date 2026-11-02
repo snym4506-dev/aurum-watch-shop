@@ -1,17 +1,15 @@
-﻿# AURUM â€” Fine Watches
+# AURUM - Fine Watches
 
-A cinematic single-page watch storefront: eight curated timepieces, EGP pricing, category filters, and a persistent shopping bag.
+A cinematic watch storefront: eight curated timepieces, EGP pricing, category filters, and a persistent shopping bag.
 
 **Live site:** https://snym4506-dev.github.io/aurum-watch-shop/
 
-## Features
-- Single-file HTML/CSS/JS storefront â€” no build step, no dependencies
-- 8 products with locally hosted cinematic photography
-- Category filters (Classic / Sport / Automatic)
-- Slide-out cart with quantities, subtotal and localStorage persistence
-- Fully responsive dark/gold luxury design
+## Structure
+- `index.html` - page markup
+- `css/style.css` - all styling and responsive layout
+- `js/main.js` - product data, filters, cart and localStorage
+- `assets/` - locally hosted watch photography
 
-## Run locally
-Open `index.html` in a browser.
+No build step and no dependencies. Open `index.html` in a browser, or serve the folder statically.
 
 Photography: free-license stock imagery from Pexels.
