@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURUM — Fine Watches</title>
+<meta name="description" content="Independent watchmakers, curated in Geneva since 1998.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌚</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+:root{--bg:#0a0a0b;--card:#121214;--line:#252527;--txt:#f2ede3;--mut:#918d85;--gold:#c8a45c;--gold2:#e6cf9b}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font:15px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(70% 40% at 70% 0%,#1b1710 0%,transparent 60%);pointer-events:none;z-index:-1}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+
+/* header */
+header{position:sticky;top:0;z-index:40;height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 clamp(20px,5vw,64px);background:rgba(10,10,11,.75);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.34em;font-weight:500;padding-left:.34em}
+.logo b{color:var(--gold);font-weight:400}
+nav{display:flex;gap:34px}
+nav a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);transition:color .25s}
+nav a:hover{color:var(--txt)}
+.bag{display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--line);border-radius:99px;transition:.25s}
+.bag:hover{border-color:var(--gold);color:var(--gold2)}
+.bag span{display:grid;place-items:center;min-width:19px;height:19px;border-radius:99px;background:var(--gold);color:#14100a;font-size:10px;font-weight:600;letter-spacing:0}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:40px;min-height:calc(100vh - 74px);padding:clamp(44px,6vw,90px) clamp(20px,5vw,64px);position:relative}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:clamp(52px,7.4vw,104px);line-height:.92;letter-spacing:-.02em;margin:26px 0 24px}
+.hero h1 em{font-style:italic;color:var(--gold2)}
+.hero p.lead{color:var(--mut);max-width:43ch;font-weight:300;font-size:16px}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin:36px 0 48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 28px;border-radius:99px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;transition:.25s;border:1px solid transparent}
+.btn.gold{background:var(--gold);color:#171208}
+.btn.gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn.ghost{border-color:var(--line);color:var(--txt)}
+.btn.ghost:hover{border-color:var(--gold);color:var(--gold2)}
+.btn.full{width:100%}
+.stats{display:flex;gap:clamp(24px,4vw,56px);border-top:1px solid var(--line);padding-top:26px;max-width:520px}
+.stats b{display:block;font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:500;color:var(--gold2);line-height:1}
+.stats span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.stage{position:relative;display:grid;place-items:center;min-height:420px}
+.stage::before{content:"";position:absolute;width:min(86%,490px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#c8a45c30,#c8a45c08 55%,transparent 70%);filter:blur(10px)}
+.frame{position:relative;width:min(88%,400px);aspect-ratio:3/4;border-radius:190px 190px 18px 18px;overflow:hidden;border:1px solid #c8a45c3d;box-shadow:0 44px 80px -26px #000d;animation:float 7s ease-in-out infinite alternate;background:#121214}
+.frame img{width:100%;height:100%;object-fit:cover;filter:saturate(.95)}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 48%,#08080ad9)}
+.fcap{position:absolute;left:22px;bottom:20px;z-index:2;text-align:left}
+.fcap span{display:block;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.fcap b{font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:500;line-height:1.1}
+@keyframes float{to{transform:translateY(-12px)}}
+
+/* collection */
+section.pad{padding:clamp(64px,8vw,110px) clamp(20px,5vw,64px)}
+.shead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px}
+.shead h2{font-family:"Cormorant Garamond",serif;font-size:clamp(36px,4.6vw,58px);font-weight:400;line-height:1;margin-top:14px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{height:36px;padding:0 17px;border-radius:99px;border:1px solid var(--line);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);transition:.2s}
+.filters button:hover{color:var(--txt);border-color:#3a3a3d}
+.filters button.on{background:var(--gold);border-color:var(--gold);color:#171208;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:20px}
+.card{background:linear-gradient(180deg,#141416,#0e0e10);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);border-color:#3d3626;box-shadow:0 26px 46px -22px #000}
+.card .img{position:relative;aspect-ratio:4/5;background:#161618;overflow:hidden}
+.card .img img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.06);transition:transform .9s cubic-bezier(.2,.7,.3,1)}
+.card .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 58%,#0e0e10d9);pointer-events:none}
+.card:hover .img img{transform:scale(1.07)}
+.card .tag{position:absolute;z-index:2;top:12px;left:12px;padding:5px 10px;border-radius:99px;border:1px solid #c8a45c3d;background:#0a0a0ab8;backdrop-filter:blur(6px);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.cbody{padding:15px 16px 16px;display:flex;flex-direction:column;flex:1}
+.card h3{font-family:"Cormorant Garamond",serif;font-size:23px;font-weight:500;line-height:1.15}
+.card .sub{font-size:11.5px;color:var(--mut);margin-top:3px;letter-spacing:.03em}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:16px}
+.crow b{font-size:14px;font-weight:500;letter-spacing:.02em}
+.add{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);border:1px solid #403722;border-radius:99px;padding:8px 14px;transition:.2s;white-space:nowrap}
+.add:hover{background:var(--gold);color:#171208;border-color:var(--gold)}
+
+/* story */
+.story{border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center;background:radial-gradient(55% 120% at 50% 120%,#171410,transparent 70%)}
+.story blockquote{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,4vw,50px);font-style:italic;font-weight:400;line-height:1.2;max-width:22ch;margin:22px auto 0;letter-spacing:-.01em}
+.story .sgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(36px,7vw,110px);margin-top:clamp(34px,5vw,58px)}
+.story .sgrid div{text-align:center}
+.story .sgrid b{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:500;color:var(--gold2);line-height:1}
+.story .sgrid span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+
+/* footer */
+footer{padding:clamp(44px,6vw,76px) clamp(20px,5vw,64px) 28px}
+.fmain{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:36px;padding-bottom:40px}
+footer p{color:var(--mut);max-width:34ch;font-size:13px;margin-top:14px;font-weight:300}
+form.news{display:flex;gap:8px;width:min(360px,100%)}
+.news input{flex:1;height:46px;padding:0 18px;background:#111113;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--txt);min-width:0}
+.news input::placeholder{color:#6e6b65}
+.news button{height:46px;padding:0 22px;border-radius:99px;background:var(--gold);color:#171208;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:.2s}
+.news button:hover{background:var(--gold2)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;border-top:1px solid var(--line);padding-top:22px;font-size:11px;letter-spacing:.1em;color:#6e6b65;text-transform:uppercase}
+
+/* cart */
+.overlay{position:fixed;inset:0;background:#000a;backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:.3s;z-index:50}
+.overlay.on{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#0d0d0f;border-left:1px solid var(--line);z-index:60;display:flex;flex-direction:column;transform:translateX(104%);transition:transform .38s cubic-bezier(.4,0,.2,1)}
+.drawer.on{transform:none}
+.dhead{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+.dhead h3{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:500}
+.x{font-size:26px;line-height:1;color:var(--mut);padding:0 4px;transition:.2s}
+.x:hover{color:var(--txt)}
+.items{flex:1;overflow:auto;padding:0 24px}
+.empty{color:var(--mut);font-size:13px;text-align:center;margin-top:70px;line-height:1.9}
+.citem{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.thumb{width:48px;height:62px;flex:0 0 auto;overflow:hidden;background:#161618;border:1px solid var(--line);border-radius:8px}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.ci{flex:1;min-width:0}
+.ci b{display:block;font-family:"Cormorant Garamond",serif;font-size:18px;font-weight:500;line-height:1.2}
+.ci>span{font-size:12px;color:var(--mut)}
+.q{display:flex;align-items:center;gap:10px;margin-top:8px}
+.q button{width:22px;height:22px;border:1px solid var(--line);border-radius:6px;font-size:13px;line-height:1;color:var(--mut);transition:.2s}
+.q button:hover{border-color:var(--gold);color:var(--gold2)}
+.q span{font-size:12px;min-width:14px;text-align:center}
+.rm{color:#6e6b65;font-size:18px;padding:4px;transition:.2s}
+.rm:hover{color:#e07a6a}
+.dfoot{padding:22px 24px 26px;border-top:1px solid var(--line);background:#101012}
+.dfoot .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.dfoot .row span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.dfoot .row b{font-size:20px;font-weight:500}
+.note{font-size:11px;color:#6e6b65;margin:0 0 18px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,16px);background:var(--gold);color:#171208;font-size:12.5px;font-weight:500;padding:13px 22px;border-radius:99px;opacity:0;visibility:hidden;transition:.3s;z-index:80;box-shadow:0 16px 30px #000a;max-width:90vw;text-align:center}
+.toast.on{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+@media(max-width:860px){
+ .hero{grid-template-columns:1fr;min-height:0;padding-top:50px;text-align:center}
+ .hero p.lead{margin:0 auto}
+ .cta,.stats{justify-content:center}
+ .stats{margin:0 auto}
+ .stage{order:-1;min-height:300px}
+ .frame{width:min(80%,320px)}
+ nav{display:none}
+}
+@media(max-width:520px){
+ .grid{grid-template-columns:1fr 1fr;gap:12px}
+ .card h3{font-size:18px}
+ .cbody{padding:12px}
+ .crow{flex-direction:column;align-items:flex-start;gap:10px}
+ .add{width:100%;text-align:center}
+ .shead{align-items:flex-start}
+ .hero h1{letter-spacing:-.01em}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#" class="logo">AUR<b>U</b>M</a>
+  <nav>
+    <a href="#collection">Collection</a>
+    <a href="#story">Heritage</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <button class="bag" id="openBag">Bag <span id="badge">0</span></button>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <p class="eyebrow">Est. 1998 — Geneva</p>
+    <h1>Time,<br><em>refined.</em></h1>
+    <p class="lead">A tightly curated collection of mechanical timepieces from independent makers. Fewer watches, made properly.</p>
+    <div class="cta">
+      <a href="#collection" class="btn gold">Shop the collection</a>
+      <a href="#story" class="btn ghost">Our heritage</a>
+    </div>
+    <div class="stats">
+      <div><b>25</b><span>Years of craft</span></div>
+      <div><b>12</b><span>Independent makers</span></div>
+      <div><b>2yr</b><span>Full warranty</span></div>
+    </div>
+  </div>
+  <div class="stage">
+    <div class="frame">
+      <img src="assets/hero.jpg" alt="Aurum signature gold timepiece in dramatic light" fetchpriority="high">
+      <div class="fcap"><span>The signature</span><b>Meridian 38 · 18k gold</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="collection">
+  <div class="shead">
+    <div>
+      <p class="eyebrow">The collection</p>
+      <h2>Timepieces</h2>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button>
+      <button data-f="classic">Classic</button>
+      <button data-f="sport">Sport</button>
+      <button data-f="automatic">Automatic</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="story pad" id="story">
+  <p class="eyebrow">Our philosophy</p>
+  <blockquote>“We don’t sell watches. We keep time.”</blockquote>
+  <div class="sgrid">
+    <div><b>1998</b><span>Founded in Geneva</span></div>
+    <div><b>40+</b><span>Calibres serviced</span></div>
+    <div><b>70</b><span>Countries shipped</span></div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="fmain">
+    <div>
+      <div class="logo">AUR<b>U</b>M</div>
+      <p>Independent watchmakers, curated in Geneva since 1998. Complimentary insured shipping across Egypt.</p>
+    </div>
+    <form class="news" id="news">
+      <input type="email" required placeholder="Join the waitlist" aria-label="Email address">
+      <button>Join</button>
+    </form>
+  </div>
+  <div class="fbot">
+    <span>© 2026 Aurum Horlogerie</span>
+    <span>Geneva · Cairo · Tokyo</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag">
+  <div class="dhead"><h3>Your bag</h3><button class="x" id="closeBag" aria-label="Close bag">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="dfoot">
+    <div class="row"><span>Subtotal</span><b id="total">EGP 0</b></div>
+    <p class="note">Taxes and insured shipping calculated at checkout.</p>
+    <button class="btn gold full" id="checkout">Checkout</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const money=n=>'EGP '+n.toLocaleString('en-US');
+
+const D=[
+ {n:'Meridian 38',t:'Hand-wound · 38 mm',p:198000,c:'classic',img:'assets/01-meridian.jpg'},
+ {n:'Noir Automatic',t:'Self-winding · 41 mm',p:279000,c:'automatic',img:'assets/02-noir.jpg'},
+ {n:'Solstice GMT',t:'Dual time · 40 mm',p:305000,c:'sport',img:'assets/03-solstice.jpg'},
+ {n:'Alpine Chrono',t:'Chronograph · 42 mm',p:189000,c:'sport',img:'assets/04-alpine.jpg'},
+ {n:'Heritage 1929',t:'Manual · 36 mm',p:345000,c:'classic',img:'assets/05-heritage.jpg'},
+ {n:'Obsidian Skeleton',t:'Skeleton · 40 mm',p:425000,c:'automatic',img:'assets/06-obsidian.jpg'},
+ {n:'Midnight Diver',t:'200 m · 41 mm',p:129000,c:'sport',img:'assets/07-midnight.jpg'},
+ {n:'Rosewood Slim',t:'Ultra-thin · 39 mm',p:229000,c:'classic',img:'assets/08-rosewood.jpg'}
+];
+D.forEach((w,i)=>w.id=i);
+
+let filter='all';
+let cart=JSON.parse(localStorage.getItem('aurum')||'{}');
+
+const card=w=>`<article class="card">
+  <div class="img"><img src="${w.img}" alt="${w.n} — ${w.t}" loading="lazy" decoding="async"><span class="tag">${w.c}</span></div>
+  <div class="cbody">
+    <h3>${w.n}</h3>
+    <p class="sub">${w.t}</p>
+    <div class="crow"><b>${money(w.p)}</b><button class="add" data-add="${w.id}" aria-label="Add ${w.n} to bag">Add +</button></div>
+  </div>
+</article>`;
+
+function render(){
+  $('#grid').innerHTML=D.filter(w=>filter==='all'||w.c===filter).map(card).join('');
+}
+
+function renderBag(){
+  const ids=Object.keys(cart);
+  $('#badge').textContent=ids.reduce((s,i)=>s+cart[i],0);
+  $('#items').innerHTML=ids.length?ids.map(i=>{
+    const w=D[i];
+    return `<div class="citem">
+      <div class="thumb"><img src="${w.img}" alt="${w.n}" loading="lazy"></div>
+      <div class="ci"><b>${w.n}</b><span>${money(w.p)}</span>
+        <div class="q">
+          <button data-q="dec" data-id="${i}" aria-label="Decrease quantity">−</button>
+          <span>${cart[i]}</span>
+          <button data-q="inc" data-id="${i}" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <button class="rm" data-q="rm" data-id="${i}" aria-label="Remove ${w.n}">×</button>
+    </div>`}).join(''):'<p class="empty">Your bag is empty.<br>Beautiful things await.</p>';
+  $('#total').textContent=money(ids.reduce((s,i)=>s+D[i].p*cart[i],0));
+  localStorage.setItem('aurum',JSON.stringify(cart));
+}
+
+const drawerOpen=v=>{
+  $('#drawer').classList.toggle('on',v);
+  $('#overlay').classList.toggle('on',v);
+  document.body.style.overflow=v?'hidden':'';
+};
+
+let toastTimer;
+function toast(msg){
+  const t=$('#toast');
+  t.textContent=msg; t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('on'),2600);
+}
+
+document.addEventListener('click',e=>{
+  const add=e.target.closest('[data-add]');
+  if(add){
+    const id=add.dataset.add;
+    cart[id]=(cart[id]||0)+1;
+    renderBag(); toast('Added to your bag');
+    return;
+  }
+  const q=e.target.closest('[data-q]');
+  if(q){
+    const id=q.dataset.id, act=q.dataset.q;
+    if(act==='inc') cart[id]++;
+    else if(act==='dec'&&cart[id]>1) cart[id]--;
+    else delete cart[id];
+    renderBag();
+  }
+});
+
+$('#filters').onclick=e=>{
+  if(!e.target.dataset.f) return;
+  filter=e.target.dataset.f;
+  [...document.querySelectorAll('#filters button')].forEach(b=>b.classList.toggle('on',b===e.target));
+  render();
+};
+
+$('#openBag').onclick=()=>drawerOpen(true);
+$('#closeBag').onclick=()=>drawerOpen(false);
+$('#overlay').onclick=()=>drawerOpen(false);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') drawerOpen(false) });
+
+$('#checkout').onclick=()=>{
+  if(!Object.keys(cart).length) return toast('Your bag is empty');
+  cart={}; renderBag(); drawerOpen(false);
+  toast('Order placed — a confirmation is on its way.');
+};
+
+$('#news').onsubmit=e=>{
+  e.preventDefault(); e.target.reset();
+  toast('You’re on the list. Welcome to Aurum.');
+};
+
+render(); renderBag();
+</script>
+</body>
+</html>
